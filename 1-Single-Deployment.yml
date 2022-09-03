@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: planes
+spec:
+  selector:
+    matchLabels:
+      app: planes
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: planes
+        project: axel
+    spec:
+      containers:
+      - name: planes
+        image: dushca4ever/node-app:latest
+        ports:
+        - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flights
+spec:
+  selector:
+    matchLabels:
+      app: flights
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: flights
+        project: axel
+    spec:
+      containers:
+      - name: flights
+        image: dushca4ever/node-app:latest
+        ports:
+        - containerPort: 8080
